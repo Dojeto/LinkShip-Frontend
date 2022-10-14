@@ -26,7 +26,7 @@ const Links = () => {
   }, []);
   return (
     <>
-      <div className="bg-[#0f172a] h-screen">
+      <div className="bg-[#06283D] h-screen">
         <div className="text-white flex items-center justify-center flex-col gap-y-2 pt-10">
           <h2 className="font-bold font-body text-xl">
             Hey There I am Om Limdiwala ~{" "}
@@ -50,7 +50,7 @@ const Links = () => {
                   key={index}
                   style={{
                     color: "black",
-                    backgroundColor: "#90caf9",
+                    backgroundColor: "#F05454",
                     padding: "14px 30px",
                     fontSize: "15px",
                     minWidth: "150px",

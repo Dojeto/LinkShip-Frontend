@@ -9,6 +9,8 @@ const Home = (props) => {
   const [login, setLogin] = useState(false);
   const [username, setUsername] = useState("");
   const [pass, setPass] = useState("");
+  const [firstname,setFirstname] = useState("");
+  const [lastname,setLastname] = useState("");
 
   const onRegisterSubmit = async () => {
     const response = await fetch(
@@ -57,7 +59,7 @@ const Home = (props) => {
   };
   return (
     <>
-      <div className="bg-[#0f172a] h-screen flex items-center flex-col justify-center">
+      <div className="bg-[#06283D] h-screen flex items-center flex-col justify-center">
         <Card
           style={{
             position: "relative",
@@ -67,7 +69,7 @@ const Home = (props) => {
             rowGap: "30px",
             alignItems: "center",
             height: "500px",
-            backgroundColor: "#1a2e4f",
+            backgroundColor: "#DDDDDD",
             minWidth: "350px",
             borderRadius: "15px",
             boxShadow: "10px 20px #000000",
@@ -76,19 +78,19 @@ const Home = (props) => {
         >
           <img
             style={{
-              width: "150px",
+              width: "300px",
             }}
-            src="./pngtree-game-treasure-chest-png-image_4705366-removebg-preview.png"
+            src="./zyro-image-removebg-preview.png"
           />
-          <h1 className="text-white text-center">
-            Link Peti Easy Way to Share Social Links <br /> Make Your Own Simple
-            Website🤍
+          <h1 className="text-[#000000] text-center">
+            Link Ship Easy Way to Share Social Links <br /> Make Your Own Simple
+            Website
           </h1>
           <Button
             key={1}
             style={{
-              color: "black",
-              backgroundColor: "#7e89ab",
+              color: "#DFF6FF",
+              backgroundColor: "#F05454 ",
               padding: "14px 30px",
               fontSize: "15px",
               minWidth: "150px",
@@ -102,8 +104,8 @@ const Home = (props) => {
           <Button
             key={12}
             style={{
-              color: "black",
-              backgroundColor: "#7e89ab",
+              color: "#DFF6FF",
+              backgroundColor: "#F05454",
               padding: "14px 30px",
               fontSize: "15px",
               minWidth: "150px",
@@ -116,7 +118,7 @@ const Home = (props) => {
           </Button>
         </Card>
         <h3
-          className="text-white"
+          className="text-[#DFF6FF]"
           style={{
             position: "relative",
             top: "65px",
@@ -134,6 +136,20 @@ const Home = (props) => {
                 type="text"
                 onChange={(e) => setUsername(e.target.value)}
               />
+              <span className="font-bold">First Name</span>
+              <input
+                value={firstname}
+                className="border-2 h-10 border-black"
+                type="text"
+                onChange={(e) => setFirstname(e.target.value)}
+              />
+              <span className="font-bold">Last Name</span>
+              <input
+                value={lastname}
+                className="border-2 h-10 border-black"
+                type="text"
+                onChange={(e) => setLastname(e.target.value)}
+              />
               <span className="font-bold">Password</span>
               <input
                 value={pass}
@@ -145,7 +161,7 @@ const Home = (props) => {
                 key={10}
                 style={{
                   color: "black",
-                  backgroundColor: "#7e89ab",
+                  backgroundColor: "#F05454",
                   padding: "14px 30px",
                   fontSize: "15px",
                   minWidth: "150px",
@@ -181,7 +197,7 @@ const Home = (props) => {
                 onClick={() => onLoginSubmit()}
                 style={{
                   color: "black",
-                  backgroundColor: "#7e89ab",
+                  backgroundColor: "#F05454",
                   padding: "14px 30px",
                   fontSize: "15px",
                   minWidth: "150px",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import Table from "react-bootstrap/Table";
-import { AiFillEdit } from "react-icons/ai";
+import { AiTwotoneDelete } from "react-icons/ai";
 import Modal from "../model/Modal";
 import validator from 'validator'
 import toast from "react-hot-toast";
@@ -9,12 +9,29 @@ import toast from "react-hot-toast";
 let test = "";
 const Dashboard = () => {
   const [addLink, setaddLink] = useState(false);
-  const [updateLinks, setupdateLinks] = useState(false);
   const [userName, setuserName] = useState("");
   const [userData, setuserData] = useState(false);
-
+  
+  const [removeLinks, setremoveLinks] = useState("");
   const [appname, setAppname] = useState("");
   const [applink, setApplink] = useState("");
+
+  const OnRemoveClick = async (id) =>{
+    const response = await fetch("https://linkpeti-backend-production.up.railway.app/manage/removelink",{
+          method:'POST',
+          credentials: "include",
+          headers: {
+            token: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            appname: id,
+          }),
+    })
+    const data = await response.json();
+    console.log(data);
+    window.location.href="/user/dashboard"
+  } 
 
   const onAddLink = async () => {
     if(appname=='')
@@ -42,7 +59,7 @@ const Dashboard = () => {
     );
     console.log(await response.json());
     setaddLink(false);
-    // window.location.href='/user/dashboard'
+    window.location.href='/user/dashboard'
   };
   const getuser = async () => {
     const response = await fetch(
@@ -78,7 +95,7 @@ const Dashboard = () => {
   return (
     <>
       <div>
-        <div className="bg-[#0f172a] h-screen flex items-center flex-col p-5">
+        <div className="bg-[#06283D] h-screen flex items-center flex-col p-5">
           <div style={{ display: "block", position: "relative" }}>
             <h2 className="text-white text-2xl">
               Welcome Back {userName.toUpperCase()} ~
@@ -86,18 +103,18 @@ const Dashboard = () => {
             <img
               style={{
                 position: "absolute",
-                top: "-15px",
-                left: "-90px",
-                width: "80px",
+                top: "0px",
+                left: "-55px",
+                width: "50px",
               }}
-              src="../pngtree-game-treasure-chest-png-image_4705366-removebg-preview.png"
+              src="../zyro-image-removebg-preview logo.png"
             />
           </div>
           <Button
             key={12}
             style={{
               color: "black",
-              backgroundColor: "#7e89ab",
+              backgroundColor: "#F05454",
               padding: "14px 30px",
               fontSize: "15px",
               minWidth: "150px",
@@ -121,12 +138,16 @@ const Dashboard = () => {
                   size="sm"
                 >
                   <div className="flex gap-3 flex-col text-2xl m-5">
-                    <div className="flex gap-9">
-                      <span>{ele}</span>
-                      <span>{test.userinput.links[index]}</span>
-                      <span>
-                        <AiFillEdit />
-                      </span>
+                    <div className="flex gap-9 justify-center items-center">
+                      <div>{ele}</div>
+                      <div>{test.userinput.links[index]}</div>
+                      <div>
+                        <div className="cursor-pointer" onClick={()=>{
+                          OnRemoveClick(ele);
+                        }}>
+                          <AiTwotoneDelete/>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </Table>
