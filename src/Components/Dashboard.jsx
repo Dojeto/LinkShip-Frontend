@@ -3,6 +3,8 @@ import { Button } from "@mui/material";
 import Table from "react-bootstrap/Table";
 import { AiFillEdit } from "react-icons/ai";
 import Modal from "../model/Modal";
+import validator from 'validator'
+import toast from "react-hot-toast";
 
 let test = "";
 const Dashboard = () => {
@@ -15,6 +17,14 @@ const Dashboard = () => {
   const [applink, setApplink] = useState("");
 
   const onAddLink = async () => {
+    if(appname=='')
+    {
+      return toast.error("Please Add Your App Name")
+    }
+    if(!validator.isURL(applink))
+    {
+      return toast.error("Invalid Url")
+    }
     const response = await fetch(
       "https://linkpeti-backend-production.up.railway.app/manage/addlink",
       {
