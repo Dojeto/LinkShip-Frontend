@@ -13,6 +13,10 @@
 <!-- PROJECT ABOUT -->
 ## <img src="https://user-images.githubusercontent.com/81398258/193457879-3112522a-c6e0-46f9-989b-e6767869e831.png" align ="center" width="42" height="42">About This Project
 
+![image](https://user-images.githubusercontent.com/81398258/196001770-6632452d-f38c-4e76-8a58-b3de788eda69.png)
+
+
+
 <p align="center">Linkship allows you to create a personal profile page. Many social media platforms only allow for one link. With this, you can have all the links you want clickable on one site. Set up your personal site on your own server in a few clicks.</p>
 
 ![NodeJS Version](https://img.shields.io/badge/NodeJS-16.9.0-green?style=for-the-badge&logo=appveyor)
