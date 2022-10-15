@@ -61,4 +61,4 @@ Contributions are what make the open source community such an amazing place to b
 
 • [Dojeto](https://github.com/Dojeto) <br>
 
-![Alt](https://repobeats.axiom.co/api/embed/4a71a93cea790c4b552f91e2d33e8aaa752a4fe6.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/a1c5db23ef9535d0710f25bf2f5da2cbd13632ab.svg "Repobeats analytics image")
