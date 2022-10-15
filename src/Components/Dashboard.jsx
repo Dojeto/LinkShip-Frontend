@@ -5,8 +5,9 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import Modal from "../model/Modal";
 import validator from 'validator'
 import toast from "react-hot-toast";
+import PositionedMenu from "./Menubar"
 
-let test = "";
+let global = "";
 const Dashboard = () => {
   const [addLink, setaddLink] = useState(false);
   const [userName, setuserName] = useState("");
@@ -17,7 +18,7 @@ const Dashboard = () => {
   const [applink, setApplink] = useState("");
 
   const OnRemoveClick = async (id) =>{
-    const response = await fetch("https://linkpeti-backend-production.up.railway.app/manage/removelink",{
+    const response = await fetch(`https://linkship.herokuapp.com/manage/removelink`,{
           method:'POST',
           credentials: "include",
           headers: {
@@ -43,7 +44,7 @@ const Dashboard = () => {
       return toast.error("Invalid Url")
     }
     const response = await fetch(
-      "https://linkpeti-backend-production.up.railway.app/manage/addlink",
+      `https://linkship.herokuapp.com/manage/addlink`,
       {
         method: "POST",
         credentials: "include",
@@ -63,7 +64,7 @@ const Dashboard = () => {
   };
   const getuser = async () => {
     const response = await fetch(
-      "https://linkpeti-backend-production.up.railway.app/dashboard",
+      `https://linkship.herokuapp.com/dashboard`,
       {
         method: "GET",
         headers: { token: localStorage.getItem("token") },
@@ -75,7 +76,7 @@ const Dashboard = () => {
 
   const getUserDetails = async () => {
     const response = await fetch(
-      `https://linkpeti-backend-production.up.railway.app/manage/getall/${userName}`,
+      `https://linkship.herokuapp.com/manage/getall/${userName}`,
       {
         method: "GET",
         credentials: "include",
@@ -83,7 +84,7 @@ const Dashboard = () => {
       }
     );
     const data = await response.json();
-    test = data;
+    global = data;
     setuserData(true);
   };
 
@@ -96,9 +97,9 @@ const Dashboard = () => {
     <>
       <div>
         <div className="bg-[#06283D] h-screen flex items-center flex-col p-5">
-          <div style={{ display: "block", position: "relative" }}>
+          <div style={{ display: "flex", position: "relative" }}>
             <h2 className="text-white text-2xl">
-              Welcome Back {userName.toUpperCase()} ~
+              Welcome Back {userName} ~
             </h2>
             <img
               style={{
@@ -110,6 +111,7 @@ const Dashboard = () => {
               src="../zyro-image-removebg-preview logo.png"
             />
           </div>
+            <PositionedMenu/>
           <Button
             key={12}
             style={{
@@ -119,7 +121,7 @@ const Dashboard = () => {
               fontSize: "15px",
               minWidth: "150px",
               maxHeight: "50px",
-              margin: "40px",
+              margin: "20px",
             }}
             onClick={() => setaddLink(true)}
             variant="contained"
@@ -127,7 +129,7 @@ const Dashboard = () => {
             Add Link
           </Button>
           {userData &&
-            test.userinput.appname.map((ele, index) => {
+            global.userinput.appname.map((ele, index) => {
               return (
                 <Table
                   key={index}
@@ -140,7 +142,7 @@ const Dashboard = () => {
                   <div className="flex gap-3 flex-col text-2xl m-5">
                     <div className="flex gap-9 justify-center items-center">
                       <div>{ele}</div>
-                      <div>{test.userinput.links[index]}</div>
+                      <div>{global.userinput.links[index]}</div>
                       <div>
                         <div className="cursor-pointer" onClick={()=>{
                           OnRemoveClick(ele);

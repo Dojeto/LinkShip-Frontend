@@ -14,12 +14,14 @@ const Home = (props) => {
 
   const onRegisterSubmit = async () => {
     const response = await fetch(
-      "https://linkpeti-backend-production.up.railway.app/auth/register",
+      `https://linkship.herokuapp.com/auth/register`,
       {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          firstname:firstname,
+          lastname:lastname,
           username: username,
           password: pass,
         }),
@@ -37,7 +39,7 @@ const Home = (props) => {
 
   const onLoginSubmit = async () => {
     const response = await fetch(
-      "https://linkpeti-backend-production.up.railway.app/auth/login",
+      `https://linkship.herokuapp.com/auth/login`,
       {
         method: "POST",
         credentials: "include",

@@ -4,6 +4,7 @@ import { Routes , Route, Navigate } from "react-router-dom"
 import Home from "./Components/Home"
 import { Toaster } from "react-hot-toast";
 import Dashboard from "./Components/Dashboard";
+import Profile from "./Components/Profile";
 
 const App = () => {
   const [userVerified,setUserverified] = useState(false);
@@ -32,6 +33,7 @@ const App = () => {
     <Routes>
       <Route path="/user/dashboard" element={userVerified ? <Dashboard/> : <Navigate to="/"/>}/>
       <Route path="/" element={!userVerified ? <Home setAuth = {setUserverified} /> : <Navigate to="/user/dashboard"/>}/>
+      <Route path="/user/profile" element = {<Profile/>} />
       <Route path="/:username" element={<Links/>}/>
     </Routes>
     <Toaster/>
