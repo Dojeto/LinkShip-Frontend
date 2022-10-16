@@ -17,52 +17,55 @@ const Profile = () => {
     "https://cdn.filestackcontent.com/U0ujuEFvQrW0rcMFcqSa"
   );
 
-  const onBioUpdate = async () =>{
+  const onBioUpdate = async () => {
     try {
-      const response = await fetch(`https://linkship.herokuapp.com/manage/addbio`,{
-        method:"POST",
-        credentials: "include",
-        headers: {
-          token: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-        body : JSON.stringify({
-          userBio  : bio
-        })
-      })
+      const response = await fetch(
+        `https://linkship.herokuapp.com/manage/addbio`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            token: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userBio: bio,
+          }),
+        }
+      );
       console.log(response);
-      window.location.href='/user/profile'
+      window.location.href = "/user/profile";
     } catch (err) {
-      console.log(err.message)
+      console.log(err.message);
     }
-  }
-  const onImageUpload = async(url)=>{
+  };
+  const onImageUpload = async (url) => {
     try {
-      const response = await fetch(`https://linkship.herokuapp.com/manage/addimage`,{
-        method:"POST",
-        credentials: "include",
-        headers: {
-          token: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-        body : JSON.stringify({
-          imageUrl : url
-        })
-      })
-      console.log(response)
-      window.location.href='/user/profile'
+      const response = await fetch(
+        `https://linkship.herokuapp.com/manage/addimage`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            token: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            imageUrl: url,
+          }),
+        }
+      );
+      console.log(response);
+      window.location.href = "/user/profile";
     } catch (err) {
-      console.log(err.message)
+      console.log(err.message);
     }
-  }
+  };
   const getuser = async () => {
-    const response = await fetch(
-      `https://linkship.herokuapp.com/dashboard`,
-      {
-        method: "GET",
-        headers: { token: localStorage.getItem("token") },
-      }
-    );
+    const response = await fetch(`https://linkship.herokuapp.com/dashboard`, {
+      method: "GET",
+      headers: { token: localStorage.getItem("token") },
+    });
     const data = await response.json();
     setuserName(data);
   };
@@ -89,6 +92,40 @@ const Profile = () => {
   return (
     <>
       <div className="bg-[#06283D] h-screen flex items-center justify-center flex-col p-5">
+        <Button
+          key={12}
+          style={{
+            color: "black",
+            backgroundColor: "#F05454",
+            padding: "14px 30px",
+            fontSize: "15px",
+            minWidth: "150px",
+            maxHeight: "50px",
+            marginBottom: "20px",
+          }}
+          onClick={() => (window.location.href = "/user/dashboard")}
+          variant="contained"
+        >
+          Dashboard
+        </Button>
+        <Button
+          key={12}
+          style={{
+            color: "black",
+            backgroundColor: "#F05454",
+            padding: "14px 30px",
+            fontSize: "15px",
+            minWidth: "150px",
+            maxHeight: "50px",
+            marginBottom: "20px",
+          }}
+          onClick={() => {
+            window.open(`https://linkship.vercel.app/${global.username}`);
+          }}
+          variant="contained"
+        >
+          Your Link
+        </Button>
         <Card
           style={{
             position: "relative",
@@ -105,7 +142,10 @@ const Profile = () => {
           }}
           variant="outlined"
         >
-          <img style={{ width: "100px", borderRadius: "50%" }} src={global.imgurl} />
+          <img
+            style={{ width: "100px", borderRadius: "50%" }}
+            src={global.imgurl}
+          />
           <div
             style={{
               textAlign: "center",

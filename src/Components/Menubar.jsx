@@ -39,7 +39,7 @@ export default function PositionedMenu() {
           marginTop: "20px",
         }}
       >
-        Dashboard
+        Profile
       </Button>
       <Menu
         id="demo-positioned-menu"
